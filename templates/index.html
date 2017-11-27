@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW Search Flask</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="container" id="header">
+            <div class="page-header well">
+                <h1>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-search">&nbsp</span>
+                    </a>
+                    Reddit HW Search Flask App
+                </h1>
+                <p>Search for items within Reddit HWSwap</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="form-group">
+                <form class="" action="{{ url_for('index')}}" method="post">
+                    <label>What are you looking for?</label>
+                    <input type="text" class="form-control" name="query" required="required">
+                    <p class="help-block">Enter an item name.</p>
+                    <button class="btn btn-success" type="submit" name="button">Search</button>
+                </form>
+            </div>
+            <br /> {% if msg %}
+            <span class="msg"> {{ msg }} </span> {% endif %}
+        </div>
+
+        <hr>
+
+        <div class="container">
+            {% if data %}
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Type of Transaction</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                </tr>
+                {% for keys, values in data.items()%}
+                <tr>
+                    <td>
+                        {{ keys | safe }}
+                    </td>
+                    <td>
+                        {{ values[0]['type'] | safe }}
+                    </td>
+                    <td>
+                        {{ values[1]['text'] | safe }}
+                    </td>
+                    <td>
+                        <a href="{{ values[2]['url'] | safe }}" target="_blank">Take me there!</a>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </table>
+            {% endif %}
+            <small><span id="searchAgain"></span></small>
+        </div>
+
+    </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

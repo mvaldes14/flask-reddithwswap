@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    width: auto;
+    overflow: hidden;
+}
+
+.well {
+    background-color: black;
+    color: white;
+}
+
+.glyphicon-search {
+    font-size: 25px;
+}
+
+.glyphicon-floppy-save {
+    font-size: 15px;
+}
+
+th {
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-weight: 400;
+}
+
+td {
+    padding: 20px;
+}
+
+tr {
+    width: 600px;
+}
+
+.msg {
+    align-items: center;
+    color: red;
+    font-size: 20px;
+}

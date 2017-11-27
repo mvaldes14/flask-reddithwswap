@@ -1,8 +1,10 @@
+import os
+
 # Reddit Credentials
-reddit_username = ""
-reddit_password = ""
-client_id = ""
-client_secret = ""
+reddit_username = os.environ.get('REDDIT_USERNAME')
+reddit_password = os .environ.get('REDDIT_PASSWORD')
+client_id = os.environ.get('REDDIT_CID')
+client_secret = os.environ.get('REDDIT_CSECRET')
 
 
 # App Settings

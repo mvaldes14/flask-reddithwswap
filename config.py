@@ -8,7 +8,6 @@ client_secret = os.environ.get('REDDIT_CSECRET')
 
 
 # App Settings
-DEBUG = True
 PORT = 3000
 SECRET_KEY = '3453KJA9S8D7AS3453FASAD1651'
 WTF_CSRF_ENABLED = False

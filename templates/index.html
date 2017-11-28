@@ -8,6 +8,8 @@
     <title>HW Search Flask</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
@@ -44,37 +46,61 @@
 
         <div class="container">
             {% if data %}
-            <table class="table table-striped">
-                <tr>
-                    <th>Title</th>
-                    <th>Type of Transaction</th>
-                    <th>Description</th>
-                    <th>URL</th>
-                </tr>
-                {% for keys, values in data.items()%}
-                <tr>
-                    <td>
-                        {{ keys | safe }}
-                    </td>
-                    <td>
-                        {{ values[0]['type'] | safe }}
-                    </td>
-                    <td>
-                        {{ values[1]['text'] | safe }}
-                    </td>
-                    <td>
-                        <a href="{{ values[2]['url'] | safe }}" target="_blank">Take me there!</a>
-                    </td>
-                    {% endfor %}
-                </tr>
+            <table data-toggle="table" data-sort-order="desc" data-sorter="htmlSorter">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th data-sortable="true">Location</th>
+                        <th data-sortable="true">Type of Transaction</th>
+                        <th>Description</th>
+                        <th>URL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in data.items()%}
+                    <tr>
+                        <td>
+                            {{ key | safe }}
+                        </td>
+                        <td>
+                            {{ value['location'] | safe }}
+                        </td>
+                        <td>
+                            {{ value['type'] | safe }}
+                        </td>
+                        <td>
+                            {{ value['text'] | safe }}
+                        </td>
+                        <td>
+                            <a href="{{ value['url'] | safe }}" target="_blank">Take me there!</a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
             </table>
             {% endif %}
             <small><span id="searchAgain"></span></small>
         </div>
-
     </div>
+    <hr>
+    <footer>
+        <p>Repo for this code in <a href="https://github.com/RorixRebel/flask-reddithwswap">Github</a> </p>
+        <p>Site created by: <b>Miguel Valdes</b> </p>
+    </footer>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+
 
 </body>
 

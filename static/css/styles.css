@@ -12,10 +12,6 @@ body {
     font-size: 25px;
 }
 
-.glyphicon-floppy-save {
-    font-size: 15px;
-}
-
 th {
     font-size: 15px;
     background-color: black;
@@ -26,14 +22,22 @@ th {
 
 td {
     padding: 20px;
+    align-items: left;
 }
 
 tr {
     width: 600px;
+    align-items: left;
 }
 
 .msg {
     align-items: center;
     color: red;
     font-size: 20px;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: center;
+    font-style: oblique;
 }

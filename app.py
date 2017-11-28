@@ -13,7 +13,8 @@ def index():
         data = get_from_reddit(query)
         if data:
             return render_template("index.html", data=data)
-    return render_template("index.html", msg="Item not found")
+        return render_template("index.html", msg="Item not found")
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

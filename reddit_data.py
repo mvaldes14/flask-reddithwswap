@@ -1,5 +1,6 @@
 import praw
 import config
+import re
 
 
 # Reddit Functions
@@ -19,11 +20,12 @@ def get_from_reddit(item):
         item,
         sort='new',
         time_filter='week')
-    for items in reddit_posts:
-        if items.link_flair_text == 'Closed':
+    for item in reddit_posts:
+        if item.link_flair_text == 'Closed' or item.title.startswith('CAN'):
             continue
-
-        results[items.title] = [{'type': items.link_flair_text},
-                                {'text': items.selftext},
-                                {'url': items.url}]
+        location = re.findall('USA\s?\-?\s?\w+', item.title)
+        results[item.title] = {'location': location,
+                               'type': item.link_flair_text,
+                               'text': item.selftext,
+                               'url': item.url}
     return results

@@ -21,7 +21,7 @@ def get_from_reddit(item):
         sort='new',
         time_filter='week')
     for item in reddit_posts:
-        if item.link_flair_text == 'Closed' or item.title.startswith('CAN'):
+        if item.link_flair_text is 'Closed' or (item.title.startswith('[CAN]') or item.title.startswith('[GBR]')):
             continue
         location = re.findall('USA\s?\-?\s?\w+', item.title)
         results[item.title] = {'location': location,

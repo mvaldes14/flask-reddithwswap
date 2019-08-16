@@ -14,7 +14,7 @@ follow - https://praw.readthedocs.io/en/latest/getting_started/authentication.ht
 
 ## Try it with Heroku ##
 
-[Flask App on Heroku](https://flask-redditswap.herokuapp.com/
+[Flask App on Heroku](https://flask-redditswap.herokuapp.com/)
 
 
 

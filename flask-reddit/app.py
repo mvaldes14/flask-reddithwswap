@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
-from reddit_data import get_from_reddit
+from .reddit_data import get_from_reddit
 
 # Flask app
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
 
-
+# Single View
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":

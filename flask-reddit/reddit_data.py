@@ -1,5 +1,5 @@
 import praw
-import config
+from .config import reddit_password, reddit_username, client_id, client_secret
 import re
 
 # Country POSTS
@@ -8,10 +8,10 @@ COUNTRY_CODE = "[US]"
 # Reddit Functions
 def bot_login():
     reddit = praw.Reddit(
-        username=config.reddit_username,
-        password=config.reddit_password,
-        client_id=config.client_id,
-        client_secret=config.client_secret,
+        username=reddit_username,
+        password=reddit_password,
+        client_id=client_id,
+        client_secret=client_secret,
         user_agent="HWSearch App v1.0",
     )
     return reddit
@@ -24,7 +24,7 @@ def get_from_reddit(item):
         item, sort="new", time_filter="week"
     )
     for item in reddit_posts:
-        if item.link_flair_text is "Closed" or (COUNTRY_CODE in item.link_flair_text):
+        if item.link_flair_text is "Closed":
             continue
         location = re.findall("^\[US\w\s?\-?\w+\]", item.title)
         results[item.title] = {

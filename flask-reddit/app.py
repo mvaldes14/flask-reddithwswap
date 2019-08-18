@@ -9,7 +9,7 @@ app.config.from_pyfile("config.py")
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        query = request.form.get("query")
+        query = request.form.get("query").lower()
         data = get_from_reddit(query)
         if data:
             return render_template("index.html", data=data, msg="Found something.")

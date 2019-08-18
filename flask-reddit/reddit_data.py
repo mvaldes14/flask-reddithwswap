@@ -2,8 +2,8 @@ import praw
 from .config import reddit_password, reddit_username, client_id, client_secret
 import re
 
-# Country POSTS
-COUNTRY_CODE = "[US]"
+# SETTINGS
+FLAIR_STATES = ["SELLING", "BUYING", "TRADING"]
 
 # Reddit Functions
 def bot_login():
@@ -24,13 +24,14 @@ def get_from_reddit(item):
         item, sort="new", time_filter="week"
     )
     for item in reddit_posts:
-        if item.link_flair_text is "Closed":
+        if item.link_flair_text not in FLAIR_STATES:
             continue
         location = re.findall("^\[US\w\s?\-?\w+\]", item.title)
-        results[item.title] = {
-            "location": str(location).strip("[]").strip("'").strip("[]"),
-            "type": item.link_flair_text,
-            "text": item.selftext,
-            "url": item.url,
-        }
+        if location:
+            results[item.title] = {
+                "location": str(location).strip("[]").strip("'").strip("[]"),
+                "type": item.link_flair_text,
+                "text": item.selftext,
+                "url": item.url,
+            }
     return results

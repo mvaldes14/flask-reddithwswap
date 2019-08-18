@@ -1,5 +1,8 @@
 import os
 import secrets
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Reddit Credentials
 reddit_username = os.environ.get("REDDIT_USERNAME")

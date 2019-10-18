@@ -27,7 +27,7 @@ Flask = "==0.12.2"
 Jinja2 = "==2.10"
 MarkupSafe = "==1.0"
 update_checker = "==0.16"
-Werkzeug = "==0.12.2"
+Werkzeug = "==0.15.3"
 
 [requires]
 python_version = "3.7"
